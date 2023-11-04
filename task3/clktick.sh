@@ -12,6 +12,6 @@ make -j -C obj_dir/ -f Vclktick.mk Vclktick
 
 # run executable simulation file
 echo "\nRunning simulation"
-obj_dir/Vclktick
+sudo obj_dir/Vclktick
 echo "\nSimulation completed"
 

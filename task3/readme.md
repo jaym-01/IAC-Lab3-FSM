@@ -1,3 +1,9 @@
-Create your design in this folder.
+# Task 3
 
-Don't forget to copy new version of vbuddy.cpp and your port configuration file vbuddy.cfg to this folder.
+**The vbdValue() shown on bottom left of the TFT display is the value for N which gives a tick period of 1 second! (Why?)**
+
+Since the input N into the clktick module is the vbdValue().
+
+
+
+**FOR TICK PERIOD 1, N = 25**

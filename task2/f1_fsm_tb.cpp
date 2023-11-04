@@ -40,8 +40,7 @@ int main(int argc, char **argv, char **env){
 
         top->rst = (i < 2);
 
-        top->en = (i >= 2);
-        top->en = vbdFlag();
+        top->en = (i >= 2 && vbdFlag());
 
         if(Verilated::gotFinish()) exit(0);
     }
