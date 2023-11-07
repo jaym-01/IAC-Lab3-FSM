@@ -4,6 +4,8 @@
 
 Since the input N into the clktick module is the vbdValue().
 
-
-
 **FOR TICK PERIOD 1, N = 25**
+
+## Challenge
+
+N had to be changed to 46 - possibly to the fact that the bitwise opeation and reading of the poteniometer took up a lot of time.

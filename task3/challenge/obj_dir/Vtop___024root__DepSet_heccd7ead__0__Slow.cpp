@@ -19,6 +19,7 @@ VL_ATTR_COLD void Vtop___024root___settle__TOP__0(Vtop___024root* vlSelf) {
     Vtop__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop___024root___settle__TOP__0\n"); );
     // Body
+    VL_WRITEF("%5#\n",16,vlSelf->n);
     if (((((((((0U == vlSelf->top__DOT__f1Fsm__DOT__current_state) 
                | (1U == vlSelf->top__DOT__f1Fsm__DOT__current_state)) 
               | (2U == vlSelf->top__DOT__f1Fsm__DOT__current_state)) 
@@ -91,7 +92,7 @@ VL_ATTR_COLD void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     Vtop__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop___024root___ctor_var_reset\n"); );
     // Body
-    vlSelf->N = VL_RAND_RESET_I(16);
+    vlSelf->n = VL_RAND_RESET_I(16);
     vlSelf->rst = VL_RAND_RESET_I(1);
     vlSelf->clk = VL_RAND_RESET_I(1);
     vlSelf->data_out = VL_RAND_RESET_I(8);

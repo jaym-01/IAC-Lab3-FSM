@@ -6,8 +6,6 @@
 #include "iostream"
 
 int main(int argc, char **argv, char **env){
-    std::cout << "reaching file" << std::endl;
-
     int i, clk;
 
     Verilated::commandArgs(argc, argv);
@@ -29,7 +27,7 @@ int main(int argc, char **argv, char **env){
     top->rst = 1;
     top->en = 0;
 
-    for(i = 0; i < 300; i++){
+    for(i = 0; i < 100000; i++){
         for(clk = 0; clk < 2; clk++){
             tfp->dump(2*i+clk);
             top->clk = !top->clk;
@@ -42,10 +40,7 @@ int main(int argc, char **argv, char **env){
 
         top->rst = (i < 2);
 
-        top->en = (i >= 2);
-        top->en = 1;
-        
-        while(i >= 2 && !vbdFlag()){}
+        top->en = (i >= 2 && vbdFlag());
 
         if(Verilated::gotFinish()) exit(0);
     }

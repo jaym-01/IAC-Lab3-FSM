@@ -6,6 +6,14 @@
 
 #include "Vtop___024root.h"
 
+VL_INLINE_OPT void Vtop___024root___combo__TOP__0(Vtop___024root* vlSelf) {
+    if (false && vlSelf) {}  // Prevent unused
+    Vtop__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop___024root___combo__TOP__0\n"); );
+    // Body
+    VL_WRITEF("%5#\n",16,vlSelf->n);
+}
+
 VL_INLINE_OPT void Vtop___024root___sequent__TOP__0(Vtop___024root* vlSelf) {
     if (false && vlSelf) {}  // Prevent unused
     Vtop__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
@@ -17,7 +25,7 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__0(Vtop___024root* vlSelf) {
     if (vlSelf->rst) {
         vlSelf->top__DOT__f1Fsm__DOT__current_state = 0U;
         vlSelf->top__DOT__tick = 0U;
-        __Vdly__top__DOT__clkTick__DOT__count = vlSelf->N;
+        __Vdly__top__DOT__clkTick__DOT__count = vlSelf->n;
     } else {
         if (vlSelf->top__DOT__tick) {
             vlSelf->top__DOT__f1Fsm__DOT__current_state 
@@ -25,7 +33,7 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__0(Vtop___024root* vlSelf) {
         }
         if ((0U == (IData)(vlSelf->top__DOT__clkTick__DOT__count))) {
             vlSelf->top__DOT__tick = 1U;
-            __Vdly__top__DOT__clkTick__DOT__count = vlSelf->N;
+            __Vdly__top__DOT__clkTick__DOT__count = vlSelf->n;
         } else {
             __Vdly__top__DOT__clkTick__DOT__count = 
                 (0xffffU & ((IData)(vlSelf->top__DOT__clkTick__DOT__count) 
@@ -79,6 +87,7 @@ void Vtop___024root___eval(Vtop___024root* vlSelf) {
     Vtop__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop___024root___eval\n"); );
     // Body
+    Vtop___024root___combo__TOP__0(vlSelf);
     if (((IData)(vlSelf->clk) & (~ (IData)(vlSelf->__Vclklast__TOP__clk)))) {
         Vtop___024root___sequent__TOP__0(vlSelf);
         vlSelf->__Vm_traceActivity[1U] = 1U;

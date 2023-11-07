@@ -13,10 +13,9 @@ module f1_fsm(
 
     always_ff @(posedge clk)
         if(rst) current_state <= S0;
-        else if(en) begin
-            current_state <= next_state;
-        end
+        else if(en) current_state <= next_state;
     
+    // contains next state logic + output logic
     always_comb
         case(current_state)
             S0: begin

@@ -19,7 +19,7 @@ class Vtop___024root final : public VerilatedModule {
     VL_IN8(__pinNumber5,0,0);
     CData/*0:0*/ top__DOT__tick;
     CData/*0:0*/ __Vclklast__TOP__clk;
-    VL_IN16(N,15,0);
+    VL_IN16(n,15,0);
     SData/*15:0*/ top__DOT__clkTick__DOT__count;
     IData/*31:0*/ top__DOT__f1Fsm__DOT__current_state;
     IData/*31:0*/ top__DOT__f1Fsm__DOT__next_state;

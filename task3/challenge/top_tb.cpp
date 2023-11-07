@@ -22,7 +22,8 @@ int main(int argc, char **argv, char **env){
     vbdHeader("Lab 3: Task 3");
 
     // tested again -> required a diffferent value of N between each state transistion
-    top->N = 46;
+    // to the previous task
+    top->n = 46;
     top->clk = 1;
     top->rst = 1;
 

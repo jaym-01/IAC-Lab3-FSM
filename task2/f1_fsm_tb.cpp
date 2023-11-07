@@ -34,7 +34,6 @@ int main(int argc, char **argv, char **env){
             top->eval();
         }
 
-        // std::cout << (int)top->data_out << std::endl;
         vbdBar(top->data_out & 0xFF);
         vbdCycle(i + 1);
 
