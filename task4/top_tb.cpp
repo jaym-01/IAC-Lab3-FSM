@@ -3,6 +3,7 @@
 #include "Vtop.h"
 
 #include "vbuddy.cpp"     // include vbuddy code
+#include "bin_bcd.cpp"
 #define MAX_SIM_CYC 1000000
 
 #include "iostream"
@@ -30,6 +31,9 @@ int main(int argc, char **argv, char **env) {
   top->rst = 1;
   top->trigger = 0;
   top->n = 31;
+
+  bool prev_full = false;
+  bool read = false;
   
   // run simulation for MAX_SIM_CYC clock cycles
   for (simcyc=0; simcyc<MAX_SIM_CYC; simcyc++) {
@@ -43,9 +47,33 @@ int main(int argc, char **argv, char **env) {
     // Display toggle neopixel
     vbdBar(top->data_out & 0xFF);
 
-    if((int)top->data_out == 0){
+    if(prev_full && (int)top->data_out == 0){
+      // std::cout << "start" << std::endl;
       vbdInitWatch();
+
+      prev_full = false;
+      read = true;
     }
+    else if((int)top->data_out == 255){
+      prev_full = true;
+    }
+
+    if(read && vbdFlag()){
+      int time = vbdElapsed();
+      prev_full = false;
+      read = false;
+
+      int bcd_time = bin_bcd(time);
+
+      std::cout << time << std::endl;
+
+      vbdHex(4, (bcd_time >> 16) & 0xF);
+      vbdHex(3, (bcd_time >> 8) & 0xF);
+      vbdHex(2, (bcd_time >> 4) & 0xF);
+      vbdHex(1, (bcd_time & 0xF));
+
+    }
+    
 
     // set up input signals of testbench
     top->rst = (simcyc < 2);    // assert reset for 1st cycle

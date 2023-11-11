@@ -52,18 +52,15 @@ VL_ATTR_COLD void Vf1_fsm___024root___settle__TOP__0(Vf1_fsm___024root* vlSelf) 
             vlSelf->f1_fsm__DOT__next_state = 9U;
             vlSelf->data_out = 0x7fU;
         }
-    } else if ((9U == vlSelf->f1_fsm__DOT__current_state)) {
-        vlSelf->f1_fsm__DOT__next_state = 0xaU;
-        vlSelf->data_out = 0xffU;
     } else {
         vlSelf->f1_fsm__DOT__next_state = 0U;
-        vlSelf->data_out = ((0xaU == vlSelf->f1_fsm__DOT__current_state)
+        vlSelf->data_out = ((9U == vlSelf->f1_fsm__DOT__current_state)
                              ? 0xffU : 0U);
     }
     vlSelf->cmd_delay = ((0U != vlSelf->f1_fsm__DOT__current_state) 
-                         & (0xaU == vlSelf->f1_fsm__DOT__current_state));
+                         & (9U == vlSelf->f1_fsm__DOT__current_state));
     vlSelf->cmd_seq = ((0U != vlSelf->f1_fsm__DOT__current_state) 
-                       & (0xaU != vlSelf->f1_fsm__DOT__current_state));
+                       & (9U != vlSelf->f1_fsm__DOT__current_state));
 }
 
 VL_ATTR_COLD void Vf1_fsm___024root___eval_initial(Vf1_fsm___024root* vlSelf) {
@@ -71,8 +68,8 @@ VL_ATTR_COLD void Vf1_fsm___024root___eval_initial(Vf1_fsm___024root* vlSelf) {
     Vf1_fsm__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vf1_fsm___024root___eval_initial\n"); );
     // Body
-    Vf1_fsm___024root___initial__TOP__0(vlSelf);
     vlSelf->__Vclklast__TOP__clk = vlSelf->clk;
+    Vf1_fsm___024root___initial__TOP__0(vlSelf);
 }
 
 VL_ATTR_COLD void Vf1_fsm___024root___eval_settle(Vf1_fsm___024root* vlSelf) {

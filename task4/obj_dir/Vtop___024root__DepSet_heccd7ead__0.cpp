@@ -11,14 +11,16 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__0(Vtop___024root* vlSelf) {
     Vtop__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop___024root___sequent__TOP__0\n"); );
     // Init
+    IData/*31:0*/ __Vdly__top__DOT__f1Fsm__DOT__current_state;
     CData/*4:0*/ __Vdly__top__DOT__clkTick__DOT__count;
     CData/*6:0*/ __Vdly__top__DOT__LFSR__DOT__sreg;
     // Body
     __Vdly__top__DOT__LFSR__DOT__sreg = vlSelf->top__DOT__LFSR__DOT__sreg;
     __Vdly__top__DOT__clkTick__DOT__count = vlSelf->top__DOT__clkTick__DOT__count;
+    __Vdly__top__DOT__f1Fsm__DOT__current_state = vlSelf->top__DOT__f1Fsm__DOT__current_state;
     if (vlSelf->rst) {
         __Vdly__top__DOT__LFSR__DOT__sreg = 0x7fU;
-        vlSelf->top__DOT__f1Fsm__DOT__current_state = 0U;
+        __Vdly__top__DOT__f1Fsm__DOT__current_state = 0U;
         vlSelf->top__DOT__tick = 0U;
         __Vdly__top__DOT__clkTick__DOT__count = vlSelf->n;
         vlSelf->top__DOT__delayComp__DOT__current_state = 0U;
@@ -30,14 +32,14 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__0(Vtop___024root* vlSelf) {
                                                 & VL_REDXOR_8(
                                                               (0x44U 
                                                                & (IData)(vlSelf->top__DOT__LFSR__DOT__sreg)))));
-        if (vlSelf->trigger) {
-            vlSelf->top__DOT__f1Fsm__DOT__current_state = 1U;
+        if (((IData)(vlSelf->trigger) & (0U == vlSelf->top__DOT__f1Fsm__DOT__current_state))) {
+            __Vdly__top__DOT__f1Fsm__DOT__current_state = 1U;
         } else if (((IData)(vlSelf->top__DOT__cmd_seq)
                      ? (IData)(vlSelf->top__DOT__tick)
                      : ((0U != vlSelf->top__DOT__delayComp__DOT__current_state) 
                         & ((1U != vlSelf->top__DOT__delayComp__DOT__current_state) 
                            & (2U == vlSelf->top__DOT__delayComp__DOT__current_state))))) {
-            vlSelf->top__DOT__f1Fsm__DOT__current_state 
+            __Vdly__top__DOT__f1Fsm__DOT__current_state 
                 = vlSelf->top__DOT__f1Fsm__DOT__next_state;
         }
         if (vlSelf->top__DOT__cmd_seq) {
@@ -67,6 +69,7 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__0(Vtop___024root* vlSelf) {
                                                   ((IData)(vlSelf->top__DOT__delayComp__DOT__count) 
                                                    - (IData)(1U))));
     vlSelf->top__DOT__LFSR__DOT__sreg = __Vdly__top__DOT__LFSR__DOT__sreg;
+    vlSelf->top__DOT__f1Fsm__DOT__current_state = __Vdly__top__DOT__f1Fsm__DOT__current_state;
     if (((((((((1U == vlSelf->top__DOT__f1Fsm__DOT__current_state) 
                | (2U == vlSelf->top__DOT__f1Fsm__DOT__current_state)) 
               | (3U == vlSelf->top__DOT__f1Fsm__DOT__current_state)) 
@@ -100,19 +103,16 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__0(Vtop___024root* vlSelf) {
             vlSelf->top__DOT__f1Fsm__DOT__next_state = 9U;
             vlSelf->data_out = 0x7fU;
         }
-    } else if ((9U == vlSelf->top__DOT__f1Fsm__DOT__current_state)) {
-        vlSelf->top__DOT__f1Fsm__DOT__next_state = 0xaU;
-        vlSelf->data_out = 0xffU;
     } else {
         vlSelf->top__DOT__f1Fsm__DOT__next_state = 0U;
-        vlSelf->data_out = ((0xaU == vlSelf->top__DOT__f1Fsm__DOT__current_state)
+        vlSelf->data_out = ((9U == vlSelf->top__DOT__f1Fsm__DOT__current_state)
                              ? 0xffU : 0U);
     }
     vlSelf->top__DOT__cmd_delay = ((0U != vlSelf->top__DOT__f1Fsm__DOT__current_state) 
-                                   & (0xaU == vlSelf->top__DOT__f1Fsm__DOT__current_state));
+                                   & (9U == vlSelf->top__DOT__f1Fsm__DOT__current_state));
     vlSelf->top__DOT__clkTick__DOT__count = __Vdly__top__DOT__clkTick__DOT__count;
     vlSelf->top__DOT__cmd_seq = ((0U != vlSelf->top__DOT__f1Fsm__DOT__current_state) 
-                                 & (0xaU != vlSelf->top__DOT__f1Fsm__DOT__current_state));
+                                 & (9U != vlSelf->top__DOT__f1Fsm__DOT__current_state));
     vlSelf->top__DOT__delayComp__DOT__next_state = 
         ((0U == vlSelf->top__DOT__delayComp__DOT__current_state)
           ? ((IData)(vlSelf->top__DOT__cmd_delay) ? 1U

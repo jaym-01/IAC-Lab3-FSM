@@ -11,8 +11,8 @@ VL_ATTR_COLD void Vtop___024root___initial__TOP__0(Vtop___024root* vlSelf) {
     Vtop__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop___024root___initial__TOP__0\n"); );
     // Body
-    vlSelf->top__DOT__f1Fsm__DOT__current_state = 0U;
     vlSelf->top__DOT__delayComp__DOT__count = 0U;
+    vlSelf->top__DOT__f1Fsm__DOT__current_state = 0U;
 }
 
 VL_ATTR_COLD void Vtop___024root___settle__TOP__0(Vtop___024root* vlSelf) {
@@ -53,18 +53,15 @@ VL_ATTR_COLD void Vtop___024root___settle__TOP__0(Vtop___024root* vlSelf) {
             vlSelf->top__DOT__f1Fsm__DOT__next_state = 9U;
             vlSelf->data_out = 0x7fU;
         }
-    } else if ((9U == vlSelf->top__DOT__f1Fsm__DOT__current_state)) {
-        vlSelf->top__DOT__f1Fsm__DOT__next_state = 0xaU;
-        vlSelf->data_out = 0xffU;
     } else {
         vlSelf->top__DOT__f1Fsm__DOT__next_state = 0U;
-        vlSelf->data_out = ((0xaU == vlSelf->top__DOT__f1Fsm__DOT__current_state)
+        vlSelf->data_out = ((9U == vlSelf->top__DOT__f1Fsm__DOT__current_state)
                              ? 0xffU : 0U);
     }
     vlSelf->top__DOT__cmd_delay = ((0U != vlSelf->top__DOT__f1Fsm__DOT__current_state) 
-                                   & (0xaU == vlSelf->top__DOT__f1Fsm__DOT__current_state));
+                                   & (9U == vlSelf->top__DOT__f1Fsm__DOT__current_state));
     vlSelf->top__DOT__cmd_seq = ((0U != vlSelf->top__DOT__f1Fsm__DOT__current_state) 
-                                 & (0xaU != vlSelf->top__DOT__f1Fsm__DOT__current_state));
+                                 & (9U != vlSelf->top__DOT__f1Fsm__DOT__current_state));
     vlSelf->top__DOT__delayComp__DOT__next_state = 
         ((0U == vlSelf->top__DOT__delayComp__DOT__current_state)
           ? ((IData)(vlSelf->top__DOT__cmd_delay) ? 1U
@@ -85,10 +82,10 @@ VL_ATTR_COLD void Vtop___024root___eval_initial(Vtop___024root* vlSelf) {
     Vtop__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop___024root___eval_initial\n"); );
     // Body
+    vlSelf->__Vclklast__TOP__clk = vlSelf->clk;
     Vtop___024root___initial__TOP__0(vlSelf);
     vlSelf->__Vm_traceActivity[1U] = 1U;
     vlSelf->__Vm_traceActivity[0U] = 1U;
-    vlSelf->__Vclklast__TOP__clk = vlSelf->clk;
 }
 
 VL_ATTR_COLD void Vtop___024root___eval_settle(Vtop___024root* vlSelf) {

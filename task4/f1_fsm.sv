@@ -8,7 +8,7 @@ module f1_fsm(
     output logic cmd_delay
 );
 
-    typedef enum {IDLE, S0, S1, S2, S3, S4, S5, S6, S7, S8, DELAY} state;
+    typedef enum {IDLE, S0, S1, S2, S3, S4, S5, S6, S7, S8} state;
 
     state current_state, next_state;
 
@@ -16,7 +16,7 @@ module f1_fsm(
 
     always_ff @(posedge clk)
         if(rst) current_state <= IDLE;
-        else if(trigger)
+        else if(trigger && current_state == IDLE)
             current_state <= S0;
         else if(en)
             current_state <= next_state;
@@ -56,10 +56,6 @@ module f1_fsm(
                 data_out = {1'b0, {7{1'b1}}};
             end
             S8: begin
-                next_state = DELAY;
-                data_out = {8{1'b1}};
-            end
-            DELAY: begin
                 next_state = IDLE;
                 data_out = {8{1'b1}};
             end
@@ -74,7 +70,7 @@ module f1_fsm(
                 cmd_delay = 0;
                 cmd_seq = 0;            
         end
-        else if(current_state == DELAY) begin
+        else if(current_state == S8) begin
             cmd_delay = 1;
             cmd_seq = 0;
         end

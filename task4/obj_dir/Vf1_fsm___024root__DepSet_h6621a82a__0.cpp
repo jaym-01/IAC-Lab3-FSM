@@ -10,14 +10,18 @@ VL_INLINE_OPT void Vf1_fsm___024root___sequent__TOP__0(Vf1_fsm___024root* vlSelf
     if (false && vlSelf) {}  // Prevent unused
     Vf1_fsm__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vf1_fsm___024root___sequent__TOP__0\n"); );
+    // Init
+    IData/*31:0*/ __Vdly__f1_fsm__DOT__current_state;
     // Body
+    __Vdly__f1_fsm__DOT__current_state = vlSelf->f1_fsm__DOT__current_state;
     if (vlSelf->rst) {
-        vlSelf->f1_fsm__DOT__current_state = 0U;
-    } else if (vlSelf->trigger) {
-        vlSelf->f1_fsm__DOT__current_state = 1U;
+        __Vdly__f1_fsm__DOT__current_state = 0U;
+    } else if (((IData)(vlSelf->trigger) & (0U == vlSelf->f1_fsm__DOT__current_state))) {
+        __Vdly__f1_fsm__DOT__current_state = 1U;
     } else if (vlSelf->en) {
-        vlSelf->f1_fsm__DOT__current_state = vlSelf->f1_fsm__DOT__next_state;
+        __Vdly__f1_fsm__DOT__current_state = vlSelf->f1_fsm__DOT__next_state;
     }
+    vlSelf->f1_fsm__DOT__current_state = __Vdly__f1_fsm__DOT__current_state;
     if (((((((((1U == vlSelf->f1_fsm__DOT__current_state) 
                | (2U == vlSelf->f1_fsm__DOT__current_state)) 
               | (3U == vlSelf->f1_fsm__DOT__current_state)) 
@@ -51,18 +55,15 @@ VL_INLINE_OPT void Vf1_fsm___024root___sequent__TOP__0(Vf1_fsm___024root* vlSelf
             vlSelf->f1_fsm__DOT__next_state = 9U;
             vlSelf->data_out = 0x7fU;
         }
-    } else if ((9U == vlSelf->f1_fsm__DOT__current_state)) {
-        vlSelf->f1_fsm__DOT__next_state = 0xaU;
-        vlSelf->data_out = 0xffU;
     } else {
         vlSelf->f1_fsm__DOT__next_state = 0U;
-        vlSelf->data_out = ((0xaU == vlSelf->f1_fsm__DOT__current_state)
+        vlSelf->data_out = ((9U == vlSelf->f1_fsm__DOT__current_state)
                              ? 0xffU : 0U);
     }
     vlSelf->cmd_delay = ((0U != vlSelf->f1_fsm__DOT__current_state) 
-                         & (0xaU == vlSelf->f1_fsm__DOT__current_state));
+                         & (9U == vlSelf->f1_fsm__DOT__current_state));
     vlSelf->cmd_seq = ((0U != vlSelf->f1_fsm__DOT__current_state) 
-                       & (0xaU != vlSelf->f1_fsm__DOT__current_state));
+                       & (9U != vlSelf->f1_fsm__DOT__current_state));
 }
 
 void Vf1_fsm___024root___eval(Vf1_fsm___024root* vlSelf) {
